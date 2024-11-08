@@ -16,4 +16,8 @@ public interface ProductoRepository extends JpaRepository<Producto, Long>, JpaSp
     @Query("select p from Producto p where p.id_cat_prod = :idCatProducto")
     List<Producto> obtenerTodoPorCategoriaProducto(@Param("idCatProducto") String idCatProducto);
 
+    @Query("update from Producto set ")
+    Producto actualizarProducto(Producto producto);
+
+    @Query("selec")
 }

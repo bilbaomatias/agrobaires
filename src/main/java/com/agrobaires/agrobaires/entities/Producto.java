@@ -26,18 +26,19 @@ public class Producto {
     @Column(name = "id_producto")
     private Long productId;
 
-    @Column(name = "descripcion")
+    @Column(name = "descripcion", nullable = false)
     private String description;
 
-    @Column(name = "id_cat_prod")
+    @Column(name = "id_cat_prod", nullable = true)
     private Long productCatId;
 
-    @Column(name = "precio")
+    @Column(name = "precio", nullable = true)
     private String price;
 
+    @Column(name = "stock", nullable = true)
     private Integer stock;
 
-    @Column(name = "id_img")
+    @Column(name = "id_img", nullable = true)
     private Long imageId;
 
     @Column(name = "fecha_alta", updatable = false, nullable = false)

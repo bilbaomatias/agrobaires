@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  agrobaires:
+    container_name: agrobaires
+    image: agrobaires
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbpostgresql
+    networks:
+      - dev-network
+
+  dbpostgresql:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: -p 5432
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: agrobaires
+    networks:
+      - dev-network
+
+volumes:
+  pgdata: {}
+
+networks:
+  dev-network:
+    name: "dev-network"
+
+
